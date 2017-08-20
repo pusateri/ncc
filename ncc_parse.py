@@ -11,15 +11,19 @@ import sys
 import getopt
 import re
 
+__version__ = '0.1'
+
 def key_find_detail(logfile, key):
     """find the detailed information for a key in the logfile"""
-    #'^Detailed information for %s\:(.*)$^Detailed information for '
-    m = re.search('^Detailed information for %s\:(.*?)^Detailed information for ' % key, logfile, re.DOTALL|re.MULTILINE)
+    m = re.search('^Detailed information for %s\:(.*?)^(Refer.*?)(^Detailed information for |^\+[-]+)' % key, logfile, re.DOTALL|re.MULTILINE)
+    print('NCC check:')
+    print('Detailed information for %s:' % key)
     if m:
-        print('NCC check:')
-        print('Detailed information for %s:' % key)
         print(m.group(1))
-        print('--------------------------------------------------------------------------------\n')
+        print('Solution:\n%s' % m.group(2))
+    else:
+        print('Regexp no match for %s' % key)
+    print('--------------------------------------------------------------------------------\n')
 
 def log_search_no_pass(logfile):
     """search a log file for tests that didn't pass and return the keys"""
