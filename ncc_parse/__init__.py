@@ -11,7 +11,7 @@ import sys
 import getopt
 import re
 
-__version__ = '0.1'
+__version__ = '0.2'
 
 def output_heading(fmt, level, value):
     if fmt == 'text':
