@@ -19,5 +19,5 @@ setup(
     keywords = "ncc log",
     url = "http://github.com/pusateri/ncc",
     packages=['ncc_parse'],
-    long_description=read('ncc_parse/README.md'),
+    long_description=read('README.md'),
 )
